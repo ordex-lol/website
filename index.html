@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordex</title>
+
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+
+    <script src="solana.js"></script>
+
+      <!-- Open Graph -->
+  <meta property="og:type"   content="website" />
+  <meta property="og:title"  content="Dust Buster" />
+  <meta property="og:description" content="Close empty accounts, reclaim your rent." />
+  <meta property="og:url"    content="https://ordex.lol/" />
+  <meta property="og:image"  content="http://ordex.lol/og.png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter (recommended) -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@OrdexOfficial" />
+  <meta name="twitter:title"       content="Dust Buster" />
+  <meta name="twitter:description" content="Close empty accounts, reclaim your rent." />
+  <meta name="twitter:image"       content="http://ordex.lol/og.png" />
+    
+</head>
+
+<body>
+    <div class="dapp">
+
+        <header>
+            <div class="logo">
+                <div><i class="fa-solid fa-skull"></i></div>
+                <span>ORDEX</span>
+            </div>
+
+            <div class="menu">
+                <div class="socials">
+                    <a href="https://x.com/OrdexOfficial" aria-label="Twitter">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="https://discord.gg/B6PGsf3WyT" aria-label="Discord">
+                        <i class="fa-brands fa-discord"></i>
+                    </a>
+                </div>
+                <div>
+                    <button id="connectBtn">Connect Wallet</button>
+                </div>
+            </div>
+        </header>
+        <main>
+            <article>
+                <div>
+                    <h1>Dust Buster</h1>
+                    <h2>Close Accounts</h2>
+                </div>
+                <p>
+                    When you buy or receive spam and airdrop tokens, a small amount of solana is stored in each token
+                    account. Even after selling or sending all tokens, the account stays open and holds about 0.002 SOL.
+                    This tool closes all empty token accounts so you can get that solana back.
+                </p>
+            </article>
+            <div class="stats">
+                <span id="num">0.000</span>
+                <p>Recovered</p>
+            </div>
+            <div class="check" id="explorer">
+                <p>Check any wallet address, no connection required...</p>
+                <div class="frm">
+                    <input type="text" id="toCheck" placeholder="solana wallet address">
+                    <button id="checkBtn">
+                        Check
+                    </button>
+                </div>
+                <span id="checkReport">
+
+                </span>
+            </div>
+
+
+
+            <div class="wallet hidden" id="harvester">
+                <div>
+                    <div class="col">
+                        <h3>ACCOUNTS</h3>
+                        <span id="ATAs">
+                            0
+                            <!-- <i class="fa-solid fa-spinner fa-spin"></i> -->
+                        </span>
+                    </div>
+                    <div class="col">
+                        <h3>RECOVERY</h3>
+                        <span id="inSOL">
+                            0.000
+                        </span>
+                        <p id="inUSD">
+
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <button id="claimBtn">Claim + Close Accounts</button>
+                </div>
+            </div>
+
+        </main>
+        <footer>
+            <div class="info">
+                <p>
+                    Fees include <b>[ 02.50% ]</b> Lowest in the Solana ecosystem...
+                </p>
+                <p>v0.1.0</p>
+            </div>
+
+            <nav>
+                <a href="">
+                    <i class="fa-solid fa-tent"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="" class="disabled">
+                    <i class="fa-solid fa-user-astronaut"></i>
+                    <span>Profile</span>
+                </a>
+
+                <a></a>
+
+                <a href="https://solscan.io/account/G4o9SvD8ad2CTpK63NufWxLWA1oox2pbTjN32UaCz6bS">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>History</span>
+                </a>
+
+                <a href="https://discord.gg/B6PGsf3WyT">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Support</span>
+                </a>
+            </nav>
+        </footer>
+    </div>
+    <div class="bg"></div>
+    <div class="report hidden" id="overlay">
+
+        <!-- Close Button -->
+        <button class="close-btn" onclick="window.location.reload()">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Icon -->
+            <div class="icon">
+                <i class="fa-solid fa-sack-dollar fa-bounce"></i>
+            </div>
+
+            <!-- Amount -->
+            <h1 class="amount">
+                +<span id="solAmount">0.000</span>
+            </h1>
+
+            <!-- Description -->
+            <p class="description">
+                Closed <b class="highlight">[<span id="numAccounts">0</span>]</b> empty associated token accounts in <b
+                    class="highlight">[<span id="numTxs">0</span>]</b> transactions.
+            </p>
+
+            <!-- Share Icon -->
+            <div class="share">
+                <a id="solscanLink" target="_blank">
+                    <i class="fa-solid fa-share-nodes"></i>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
