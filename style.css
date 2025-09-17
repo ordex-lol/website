@@ -28,7 +28,7 @@ a {
 .bg {
 
      background-image: linear-gradient(transparent, hsla(142, 69%, 58%, 0.15)),
-        linear-gradient(-90deg, transparent 25%, rgba(0, 0, 0, 0.5)), url("./bg.jpg");
+        linear-gradient(-90deg, transparent 25%, rgba(0, 0, 0, 0.5)), url("./ordex.jpg");
 
   background-position: right;
   background-repeat: no-repeat;
