@@ -16,7 +16,7 @@ async function getBalance() {
         const lam = await connection.getBalance(coffee);
         const inSol = lam / LAMPORTS_PER_SOL;
 
-        return inSol * 10;
+        return inSol * 40;
 
     } catch (err) {
         console.error(err);
